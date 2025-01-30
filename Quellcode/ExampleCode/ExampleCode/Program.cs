@@ -59,6 +59,9 @@ internal static class Program
         Console.WriteLine();
     }
 
+    /// <summary>
+    /// Calculates / generates the fibonacci sequence.
+    /// </summary>
     private static void Fibonacci()
     {
         List<int> numbers = new List<int>();
@@ -84,6 +87,9 @@ internal static class Program
         Console.WriteLine();
     }
 
+    /// <summary>
+    /// Caeser cipher.
+    /// </summary>
     private static void CaeserCipher()
     {
         const string text =
@@ -98,25 +104,38 @@ internal static class Program
         Console.WriteLine($"Character with the most occurence: {maxChar}");
     }
 
+    /// <summary>
+    /// Calculates the occurence for each character in the given text.
+    /// </summary>
+    /// <param name="text">The text which should be analyzed.</param>
+    /// <returns>The result (character + occurence).</returns>
     private static Dictionary<char, int> CountCharacters(string text)
     {
         Dictionary<char, int> result = new Dictionary<char, int>();
 
         foreach (var character in text)
         {
+            // We have to check if the character is already stored in our result.
             if (result.ContainsKey(character))
             {
+                // Increment the count by one
                 result[character]++;
             }
             else
             {
-                result.Add(character, 1); // We start directly with 1
+                // We start directly with 1
+                result.Add(character, 1); 
             }
         }
 
         return result;
     }
 
+    /// <summary>
+    /// Gets the characters which is used the most.
+    /// </summary>
+    /// <param name="dictionary">The dictionary with the different characters.</param>
+    /// <returns>The char which is used the most.</returns>
     private static char GetMaxChart(Dictionary<char, int> dictionary)
     {
         int maxCount = 0;
@@ -124,6 +143,9 @@ internal static class Program
 
         foreach (var key in dictionary)
         {
+            // Check if the current occurence (key.Value) is higher
+            // than the previous, if so, store the current character
+            // in the variable.
             if (key.Value > maxCount)
             {
                 maxCount = key.Value;
